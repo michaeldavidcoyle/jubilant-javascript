@@ -22,3 +22,23 @@ let step = 1;
 
 console.log(`start: ${start}, finish: ${finish}, step: ${step}
 sum: ${sumSequence(start, finish, step)}`);
+
+// Given a string of any length with any characters in it, write a function to determine whether
+// or not the string contains the whole word "english". The order of characters/spelling is
+// important, a string "agkjnenglishsad" would return true while "asdneglihsth" would return
+// false. Upper and lower case does not matter. Return values should be booleans (true/false).
+
+// Examples:
+// Input: "FaagdnglishAGG" | Output: false
+// Input: "SMFENgliSHasnD" | Output: true
+
+function containsWord(string, word) {
+    if (typeof string != 'string' || typeof word != 'string') {
+        return false;
+    }
+
+    return string.toLowerCase().includes(word.toLowerCase());
+}
+
+console.log(containsWord('FaagdnglishAGG', 'english')); // false
+console.log(containsWord('SMFENgliSHasnD', 'english')); // true
