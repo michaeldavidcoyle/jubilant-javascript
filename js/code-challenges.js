@@ -42,3 +42,39 @@ function containsWord(string, word) {
 
 console.log(containsWord('FaagdnglishAGG', 'english')); // false
 console.log(containsWord('SMFENgliSHasnD', 'english')); // true
+
+// Given an array of integers, write a function that returns an array of 2 integers. The first
+// integer will be the count of the positive integers, and the second integer will be the sum
+// of the negative integers. If the input is empty or null, return an empty array.
+
+// Examples:
+// Input: [1, -6, 5, 4, 3, -7, -10, 201, -3] | Output: [5, -26]
+// Input: null | Output: []
+
+function positiveCountAndNegativeSum(integerArray) {
+    if (integerArray === null || integerArray.length === 0) {
+        return [];
+    }
+
+    let count = 0;
+    let sum = 0;
+
+    for (let i = 0; i < integerArray.length; i++) {
+        if (integerArray[i] > 0) {
+            count++;
+        } else {
+            sum += integerArray[i];
+        }
+    }
+
+    return [count, sum];
+}
+
+let intArray = [];
+
+for (let i = 0; i < 10; i++) {
+    intArray.push(Math.floor(Math.random() * 21 - 10));
+}
+
+console.log(intArray);
+console.log(positiveCountAndNegativeSum(intArray));
