@@ -78,3 +78,30 @@ for (let i = 0; i < 10; i++) {
 
 console.log(intArray);
 console.log(positiveCountAndNegativeSum(intArray));
+
+// Write a function that translates an input string by replacing each character with a number
+// representing the amount of times that character appears in the string. Then separate each
+// individual number with a different character.
+// Examples:
+// Input: "hello world", "-" | Output: "1-1-3-3-2-1-1-2-1-3-1"
+// Input: "challenge", "/" | Output: "1/1/1/2/2/2/1/1/2"
+
+function stringToCharCount(string, separator) {
+    const charCounts = new Map();
+
+    for (let i = 0; i < string.length; i++) {
+        let char = string[i];
+
+        if (charCounts.has(char)) {
+            let count = charCounts.get(char);
+            charCounts.set(char, count + 1);
+        } else {
+            charCounts.set(char, 1);
+        }
+    }
+
+    return string.split('').map(char => charCounts.get(char)).join(separator);
+}
+
+console.log(stringToCharCount('hello world', '-'));
+console.log(stringToCharCount('challenge', '/'));
