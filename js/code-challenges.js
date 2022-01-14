@@ -153,3 +153,14 @@ function age(mmddyyyy) {
 let dob = '11/04/1982';
 
 console.log(`A person born ${dob} is ${age(dob)} years old today.`);
+
+// Write a function to convert a string into an array of words.
+// Example:
+// Input: "Trick or Treat"
+// Output: [‘Trick’, ‘or’, ‘Treat’]
+
+function stringToArrayOfWords(string) {
+    return string.split(' ');
+}
+
+console.log(stringToArrayOfWords("Trick or Treat"));
