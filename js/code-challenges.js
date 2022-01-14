@@ -124,3 +124,32 @@ function formatNames(stringOfNames) {
 }
 
 console.log(formatNames("Travis:Meyer;Gene:Carangal;Tom:Young;Jeff:Meyer"));
+
+// Write a function to calculate a person’s age based on the date entered in the format MM/DD/YYYY.
+//
+// Example:
+// Input: 11/04/1982
+// Output: 39 (as of Jan 2022)
+
+function age(mmddyyyy) {
+    const dob = new Date(mmddyyyy);
+    const today = new Date();
+
+    let years = today.getFullYear() - dob.getFullYear();
+
+    if (today.getMonth() < dob.getMonth()) {
+        years--;
+    }
+
+    if (today.getMonth() === dob.getMonth()) {
+        if (today.getDate() < dob.getDate()) {
+            years--;
+        }
+    }
+
+    return years;
+}
+
+let dob = '11/04/1982';
+
+console.log(`A person born ${dob} is ${age(dob)} years old today.`);
