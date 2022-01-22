@@ -164,3 +164,32 @@ function stringToArrayOfWords(string) {
 }
 
 console.log(stringToArrayOfWords("Trick or Treat"));
+
+// Write a function to count the number of occurrences of a substring in a given string.
+// Example:
+// Input: "The pumpkin rolled down the hill and under someone’s car.", "the"
+// Output: 2
+
+function countSubstrings(string, substring) {
+    let count = 0;
+    string = string.toLowerCase();
+    let last = string.length - substring.length;
+
+    for (let start = 0; start <= last; start++) {
+        let end = start + substring.length;
+        if (string.slice(start, end) === substring) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+let string = "The pumpkin rolled down the hill and under someone’s car.";
+let substring = "the";
+
+console.log(
+    `string: "${string}"
+substring: "${substring}"
+count: ${countSubstrings(string, substring)}`
+);
