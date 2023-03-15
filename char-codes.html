@@ -8,6 +8,22 @@
         table {
             font-size: 1.2rem;
         }
+
+        .char-sans {
+            font-family: Helvetica, sans-serif;
+        }
+
+        .char-serif {
+            font-family: "Times New Roman", Georgia, serif;
+        }
+
+        .char-mono {
+            font-family: Monaco, Menlo, monospace;
+        }
+
+        .char-cursive {
+            font-family: cursive;
+        }
     </style>
     <script src="js/char-codes.js" defer></script>
 </head>
@@ -17,7 +33,10 @@
         <thead>
             <tr>
                 <th>Code</th>
-                <th>Character</th>
+                <th>Sans-serif</th>
+                <th class="char-serif">Serif</th>
+                <th class="char-mono">Monospace</th>
+                <th class="char-cursive">Cursive</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -26,7 +45,10 @@
 <template id="row-template">
     <tr>
         <td class="char-code"></td>
-        <td class="char"></td>
+        <td class="char-sans"></td>
+        <td class="char-serif"></td>
+        <td class="char-mono"></td>
+        <td class="char-cursive"></td>
     </tr>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
