@@ -57,3 +57,14 @@ function toScreamingSnakeCase(string) {
 
     return string.replaceAll(/(?=[A-Z])/g, '_').toUpperCase();
 }
+
+function lastNameFirst(fullName) {
+    let names = fullName.split(/\s+/);
+    let last = names.at(-1);
+
+    if (names.length === 2) {
+        return `${last}, ${names[0]}`;
+    }
+
+    return `${last}, ${[...names.slice(0, -1)].join(' ')}`;
+}
