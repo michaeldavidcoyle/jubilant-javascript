@@ -23,3 +23,13 @@ function toSnakeCase(string) {
         match => `_${match.replace(/\s|-/, '').toLowerCase()}`
     );
 }
+
+// outputs ALL_CAPS_WITH_UNDERSCORES
+function toScreamingSnakeCase(string) {
+    if (typeof string !== 'string') return;
+    if (/[\s_-]/.test(string)) {
+        return string.replaceAll(/[\s_-]/g, '_').toUpperCase();
+    }
+
+    return string.replaceAll(/(?=[A-Z])/g, '_').toUpperCase();
+}
