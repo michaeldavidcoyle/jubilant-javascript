@@ -2,9 +2,33 @@ function isVowel(char) {
     return /^[aeiou]$/i.test(char);
 }
 
+function isLowerCase(char) {
+    return /^[a-z]$/.test(char);
+}
+
+function isUpperCase(char) {
+    return /^[A-Z]$/.test(char);
+}
+
 function capitalize(word) {
     if (typeof word !== 'string') return;
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
+function toggleCase(string) {
+    let result = '';
+
+    for (let index = 0; index < string.length; index++) {
+        let char = string[index];
+        if (isLowerCase(char)) {
+            char = char.toUpperCase();
+        } else if (isUpperCase(char)) {
+            char = char.toLowerCase();
+        }
+        result += char;
+    }
+
+    return result;
 }
 
 function toCamelCase(string) {
