@@ -6,7 +6,10 @@ function isAlphabetic(string) {
     return /^[a-z]+$/i.test(string);
 }
 
-function isNumeric(string) {
+function isNumeric(string, strict = true) {
+    if (strict) {
+        return /^\d+$/.test(string);
+    }
     return /^-?\d*\.?\d+(?:[eE][+-]?\d+)?$/.test(string);
 }
 
