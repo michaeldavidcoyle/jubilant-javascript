@@ -2,6 +2,26 @@ function isVowel(char) {
     return /^[aeiou]$/i.test(char);
 }
 
+function isAlphabetic(string) {
+    return /^[a-z]+$/i.test(string);
+}
+
+function isAlphaNumeric(string) {
+    return /^[a-z\d]+$/i.test(string);
+}
+
+function isAlphabeticOrSpace(string) {
+    return /^[a-z\s]+$/i.test(string);
+}
+
+function isAlphaNumericOrSpace(string) {
+    return /^[a-z\d\s]+$/i.test(string);
+}
+
+function isWhitespace(char) {
+    return /^\s+$/.test(char);
+}
+
 function isLowerCase(char) {
     return /^[a-z]$/.test(char);
 }
