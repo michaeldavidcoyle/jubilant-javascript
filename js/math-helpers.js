@@ -85,3 +85,34 @@ function factorial(integer, useBigInt=false) {
 
     return product;
 }
+
+function primeFactors(integer) {
+    if (!Number.isSafeInteger(integer)) {
+        throw new TypeError('argument must be an integer');
+    }
+    if (integer < 2) {
+        throw new RangeError('argument must be an integer > 1')
+    }
+
+    const factors = [];
+    const SQRT = Math.sqrt(integer);
+
+    while (integer % 2 === 0) {
+        factors.push(2);
+        integer /= 2;
+    }
+
+    for (let i = 3; i <= integer; i += 2) {
+        while (integer % i === 0) {
+            factors.push(i);
+            integer /= i;
+        }
+
+        if (i > SQRT && isPrime(integer)) {
+            factors.push(integer);
+            break;
+        }
+    }
+
+    return factors;
+}
