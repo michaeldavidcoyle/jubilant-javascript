@@ -1,4 +1,4 @@
-// math helpers
+// math & number helpers
 
 function isPrime(integer) {
     if (!Number.isSafeInteger(integer)) return false;
@@ -115,4 +115,32 @@ function primeFactors(integer) {
     }
 
     return factors;
+}
+
+function greatestCommonDivisor(integer1, integer2) {
+    if (!Number.isSafeInteger(integer1) || !Number.isSafeInteger(integer2)) {
+        if (!Number.isInteger(integer1) || !Number.isInteger(integer2)) {
+            throw new TypeError('arguments must be integers');
+        }
+        throw new RangeError('arguments must be safe integers');
+    }
+
+    const greater = Math.max(integer1, integer2),
+          lesser = Math.min(integer1, integer2);
+
+    for (let divisor = lesser; divisor > 1; divisor--) {
+        if (greater % divisor === 0 && lesser % divisor === 0) {
+            return divisor;
+        }
+    }
+
+    return 1;
+}
+
+function add(...numbers) {
+    return numbers.reduce((sum, addend) => sum + addend);
+}
+
+function multiply(...numbers) {
+    return numbers.reduce((product, multiplier) => product * multiplier);
 }
