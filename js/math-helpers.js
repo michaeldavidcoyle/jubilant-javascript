@@ -57,3 +57,31 @@ function mode(...numbers) {
         .filter(key => counts[key] === max)
         .map(key => +key);
 }
+
+function factorial(integer, useBigInt=false) {
+    if (!Number.isInteger(integer)) {
+        throw new TypeError('argument must be an integer');
+    }
+
+    if (integer < 0) {
+        throw new RangeError('argument must be non-negative')
+    }
+
+    let product, decrement;
+
+    if (useBigInt) {
+        integer = BigInt(integer);
+        product = 1n;
+        decrement = 1n;
+    } else {
+        product = 1;
+        decrement = 1;
+    }
+
+    while (integer > 1) {
+        product *= integer;
+        integer -= decrement;
+    }
+
+    return product;
+}
