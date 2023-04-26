@@ -138,9 +138,35 @@ function greatestCommonDivisor(integer1, integer2) {
 }
 
 function add(...numbers) {
-    return numbers.reduce((sum, addend) => sum + addend);
+    if (!arrayIsNumeric(numbers)) {
+        throw new TypeError('arguments must be of type "number" or numeric strings');
+    }
+
+    return numbers.map(n => parseFloat(n))
+        .reduce((sum, addend) => sum + addend);
 }
 
 function multiply(...numbers) {
-    return numbers.reduce((product, multiplier) => product * multiplier);
+    if (!arrayIsNumeric(numbers)) {
+        throw new TypeError('arguments must be of type "number" or numeric strings');
+    }
+
+    return numbers.map(n => parseFloat(n))
+        .reduce((product, multiplier) => product * multiplier);
+}
+
+function isNumeric(value) {
+    // the == operator allows for numeric strings
+    return parseFloat(value) == value;
+}
+
+function arrayIsNumeric(array) {
+    for (let i = 0; i < array.length; i++) {
+        let term = array[i];
+        if (!isNumeric(term) || typeof term === 'bigint') {
+            return false;
+        }
+    }
+
+    return true;
 }
