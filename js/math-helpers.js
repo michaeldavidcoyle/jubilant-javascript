@@ -13,3 +13,47 @@ function isPrime(integer) {
 
     return integer > 1;
 }
+
+function mean(...numbers) {
+    let total = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+        let number = numbers[i];
+        if (parseFloat(number) !== number) return NaN;
+        total += number;
+    }
+
+    return total / numbers.length;
+}
+
+function median(...numbers) {
+    for (let i = 0; i < numbers.length; i++) {
+        if (parseFloat(numbers[i]) !== numbers[i]) return NaN;
+    }
+
+    const sorted = numbers.slice().sort((a, b) => a - b);
+    if (sorted.length % 2 === 0) {
+        let index = sorted.length / 2 - 1;
+        return (sorted[index] + sorted[index + 1]) / 2;
+    }
+
+    return sorted[Math.floor(sorted.length / 2)];
+}
+
+function mode(...numbers) {
+    const counts = {};
+
+    numbers.forEach(n => {
+        if (counts[n] === undefined) {
+            counts[n] = 1;
+        } else {
+            counts[n]++;
+        }
+    });
+
+    let max = Math.max(...Object.values(counts));
+
+    return Object.keys(counts)
+        .filter(key => counts[key] === max)
+        .map(key => +key);
+}
