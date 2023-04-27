@@ -117,6 +117,30 @@ function primeFactors(integer) {
     return factors;
 }
 
+function factorize(integer, properFactors = true) {
+    if (!Number.isInteger(integer)) {
+        throw new TypeError('argument must be an integer');
+    }
+    if (integer < 1 || !Number.isSafeInteger(integer)) {
+        throw new RangeError('argument must be a safe integer > 1')
+    }
+
+    const factors = properFactors ? [] : [1];
+    const SQRT = Math.sqrt(integer);
+
+    for (let factor = 2; factor <= SQRT; factor++) {
+        if (integer % factor === 0) factors.push(factor);
+    }
+
+    for (let index = factors.length - 1; index >= 0; index--) {
+        if (factors[index] !== SQRT) {
+            factors.push(integer / factors[index]);
+        }
+    }
+
+    return factors;
+}
+
 function greatestCommonDivisor(integer1, integer2) {
     if (!Number.isSafeInteger(integer1) || !Number.isSafeInteger(integer2)) {
         if (!Number.isInteger(integer1) || !Number.isInteger(integer2)) {
