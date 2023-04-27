@@ -164,6 +164,29 @@ function greatestCommonDivisor(integer1, integer2) {
     return 1;
 }
 
+function leastCommonMultiple(integer1, integer2) {
+    if (!Number.isInteger(integer1) || !Number.isInteger(integer2)) {
+        throw new TypeError('arguments must be integers');
+    }
+    if (
+        integer1 < 1 || !Number.isSafeInteger(integer1) ||
+        integer2 < 1 || !Number.isSafeInteger(integer2)
+    ) {
+        throw new RangeError('arguments must be safe integers > 0');
+    }
+
+    let greater = Math.max(integer1, integer2);
+    let lesser = Math.min(integer1, integer2);
+    let product = greater;
+    let multiplier = 2;
+
+    while (product % lesser !== 0) {
+        product = greater * multiplier++;
+    }
+
+    return product;
+}
+
 function add(...numbers) {
     if (!arrayIsNumeric(numbers)) {
         throw new TypeError('arguments must be of type "number" or numeric strings');
