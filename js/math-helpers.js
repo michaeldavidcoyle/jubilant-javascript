@@ -205,6 +205,36 @@ function multiply(...numbers) {
         .reduce((product, multiplier) => product * multiplier);
 }
 
+function sumDigits(integer) {
+    if (!Number.isSafeInteger(integer)) {
+        throw new TypeError('argument must be a safe integer');
+    }
+
+    integer = Math.abs(integer);
+    let sum = 0,
+        digit;
+    while (integer > 0) {
+        digit = integer % 10;
+        sum += digit;
+        integer -= digit;
+        integer /= 10;
+    }
+
+    return sum;
+}
+
+function randomInteger(min, max) {
+    if (!Number.isSafeInteger(min) || !Number.isSafeInteger(max)) {
+        throw new TypeError('arguments must be safe integers');
+    }
+
+    let x = Math.max(min, max);
+    let n = Math.min(min, max);
+    let m = (x - n) + 1;
+
+    return Math.floor(Math.random() * m + n);
+}
+
 function isNumeric(value) {
     // the == operator allows for numeric strings
     return parseFloat(value) == value;
