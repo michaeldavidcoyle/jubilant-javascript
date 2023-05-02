@@ -1,5 +1,10 @@
 // math & number helpers
 
+function isEven(integer) {
+    if (!isNumeric(integer)) return false;
+    return integer % 2 === 0;
+}
+
 function isPrime(integer) {
     if (!Number.isSafeInteger(integer)) return false;
     if (integer === 2) return true;
