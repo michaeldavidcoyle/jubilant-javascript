@@ -240,6 +240,14 @@ function randomInteger(min, max) {
     return Math.floor(Math.random() * m + n);
 }
 
+function percentError(actual, expected) {
+    if (!isNumeric(actual) || !isNumeric(expected)) {
+        throw new TypeError('arguments must be numeric');
+    }
+
+    return Math.abs((actual - expected) / expected) * 100;
+}
+
 function isNumeric(value) {
     // the == operator allows for numeric strings
     return parseFloat(value) == value;
