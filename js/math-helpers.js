@@ -248,6 +248,33 @@ function percentError(actual, expected) {
     return Math.abs((actual - expected) / expected) * 100;
 }
 
+function range(start, stop, step = 1) {
+    if (!isNumeric(start) || !isNumeric(stop) || !isNumeric(step)) {
+        throw new TypeError('arguments must be numeric');
+    }
+
+    const sequence = [];
+    step = parseFloat(step);
+
+    if (step > 0) {
+        let begin = Math.min(start, stop);
+        let end = Math.max(start, stop);
+
+        for (let i = begin; i <= end; i += step) {
+            sequence.push(i);
+        }
+    } else if (step < 0) {
+        let begin = Math.max(start, stop);
+        let end = Math.min(start, stop);
+
+        for (let i = begin; i >= end; i += step) {
+            sequence.push(i);
+        }
+    }
+
+    return sequence;
+}
+
 function isNumeric(value) {
     // the == operator allows for numeric strings
     return parseFloat(value) == value;
