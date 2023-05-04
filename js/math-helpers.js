@@ -281,12 +281,5 @@ function isNumeric(value) {
 }
 
 function arrayIsNumeric(array) {
-    for (let i = 0; i < array.length; i++) {
-        let term = array[i];
-        if (!isNumeric(term) || typeof term === 'bigint') {
-            return false;
-        }
-    }
-
-    return true;
+    return array.every(term => isNumeric(term));
 }
