@@ -146,6 +146,11 @@ function factorize(integer, properFactors = true) {
     return factors;
 }
 
+function isPerfect(integer) {
+    if (!Number.isSafeInteger(integer) || integer <= 0) return;
+    return factorize(integer, false).reduce((sum, n) => sum + n) === integer * 2;
+}
+
 function greatestCommonDivisor(integer1, integer2) {
     if (!Number.isInteger(integer1) || !Number.isInteger(integer2)) {
         throw new TypeError('arguments must be integers');
