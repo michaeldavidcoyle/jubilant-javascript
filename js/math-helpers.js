@@ -91,6 +91,14 @@ function factorial(integer, useBigInt=false) {
     return product;
 }
 
+function combinations(n, k, useBigInt = false) {
+    if (!Number.isInteger(n) || !Number.isInteger(k)) {
+        throw new TypeError('arguments must be integers');
+    }
+
+    return factorial(n, useBigInt) / (factorial(k, useBigInt) * factorial(n - k, useBigInt));
+}
+
 function primeFactors(integer) {
     if (!Number.isSafeInteger(integer)) {
         throw new TypeError('argument must be an integer');
