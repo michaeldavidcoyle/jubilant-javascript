@@ -288,6 +288,28 @@ function range(start, stop, step = 1) {
     return sequence;
 }
 
+function max(...numbers) {
+    if (!arrayIsNumeric(numbers)) return NaN;
+    let greatest = -Infinity;
+    numbers.forEach(number => {
+        let n = +number;
+        if (n > greatest) greatest = n;
+    });
+
+    return greatest;
+}
+
+function min(...numbers) {
+    if (!arrayIsNumeric(numbers)) return NaN;
+    let least = Infinity;
+    numbers.forEach(number => {
+        let n = +number;
+        if (n < least) least = n;
+    });
+
+    return least;
+}
+
 function isNumeric(value) {
     // the == operator allows for numeric strings
     return parseFloat(value) == value;
