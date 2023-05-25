@@ -193,3 +193,24 @@ console.log(
 substring: "${substring}"
 count: ${countSubstrings(string, substring)}`
 );
+
+/*
+	Write a function that takes a positive integer (seconds) and returns the time
+	in a human-readable format (HH:MM:SS). Note: you will never be given a number
+	greater than 86400, the amount of seconds in 24 hours.
+	Example:
+	input: 28314
+	output: 07:51:54
+*/
+function humanReadableTime(seconds) {
+    const hours = Math.floor(seconds / 3600).toString().padStart(2, '0');
+    seconds %= 3600;
+    const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+    seconds = (seconds % 60).toString().padStart(2, '0');;
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+console.log(`28314 seconds: ${humanReadableTime(28314)}`);
+let seconds = Math.floor(Math.random() * 86401);
+console.log(`${seconds} seconds: ${humanReadableTime(seconds)}`);
