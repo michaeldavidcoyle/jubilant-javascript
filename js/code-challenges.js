@@ -214,3 +214,35 @@ function humanReadableTime(seconds) {
 console.log(`28314 seconds: ${humanReadableTime(28314)}`);
 let seconds = Math.floor(Math.random() * 86401);
 console.log(`${seconds} seconds: ${humanReadableTime(seconds)}`);
+
+/*
+    Write a function to remove these special characters from a string: ~,!,$,&,%, ,#,@,-,_,^,?
+    (yes, "space" is a character in that list)
+
+    Examples:
+    Input: "Happy ~!&$%#@- Halloween"
+    Output: "HappyHalloween"
+    Input: "I’ll bet living in a nudist-colony takes all the fun out of Halloween!!"
+    Output: "I'llbetlivinginanudistcolonytakesallthefunoutofHalloween"
+*/
+function removeSpecialChars(string) {
+    if (typeof string !== 'string') return;
+
+    const specialChars = [
+        '~', '!', '$', '&', '%', ' ', '#', '@', '-', '_', '^', '?'
+    ];
+
+    let strippedString = '';
+
+    for (let i = 0; i < string.length; i++) {
+        let char = string[i];
+        if (!specialChars.includes(char)) {
+            strippedString += char;
+        }
+    }
+
+    return strippedString;
+}
+
+console.log(removeSpecialChars("Happy ~!&$%#@- Halloween"));
+console.log(removeSpecialChars("I’ll bet living in a nudist-colony takes all the fun out of Halloween!!"));
