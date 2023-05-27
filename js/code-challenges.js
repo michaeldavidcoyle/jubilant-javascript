@@ -246,3 +246,32 @@ function removeSpecialChars(string) {
 
 console.log(removeSpecialChars("Happy ~!&$%#@- Halloween"));
 console.log(removeSpecialChars("I’ll bet living in a nudist-colony takes all the fun out of Halloween!!"));
+
+/*
+    Determine whether or not a word is an anagram of another.
+    Return true if it is, and false if it is not.
+    Example:
+    Input: deco, code | Output: true
+    Input: last, nope | Output: false
+
+*/
+function isAnagram(string1, string2) {
+    if (typeof string1 !== 'string' || typeof string2 !== 'string') return;
+
+    const s1 = string1.replaceAll(/[^a-zA-Z0-9]/g, '')
+        .split('')
+        .map(char => char.toLowerCase())
+        .sort()
+        .join('');
+    const s2 = string2.replaceAll(/[^a-zA-Z0-9]/g, '')
+        .split('')
+        .map(char => char.toLowerCase())
+        .sort()
+        .join('');
+
+    return s1 === s2;
+}
+
+console.log('deco, code: ', isAnagram('deco', 'code'));
+console.log('last, nope: ', isAnagram('last', 'nope'));
+console.log('Louis Friend, iron sulfide:', isAnagram('Louis Friend', 'iron sulfide'));
