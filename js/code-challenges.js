@@ -6,6 +6,7 @@
 // Input: start: 1 finish: 4 step: 1 | Output: 10
 // Input: start: 4 finish: 10 step: 5 | Output: 13
 
+console.log('Write a function that returns the SUM of a sequence of numbers. This sequence is determined by three variables: start, finish, and step.');
 function sumSequence(start, finish, step) {
     let sequence = [];
 
@@ -22,6 +23,7 @@ let step = 1;
 
 console.log(`start: ${start}, finish: ${finish}, step: ${step}
 sum: ${sumSequence(start, finish, step)}`);
+console.log('-'.repeat(32));
 
 // Given a string of any length with any characters in it, write a function to determine whether
 // or not the string contains the whole word "english". The order of characters/spelling is
@@ -31,6 +33,9 @@ sum: ${sumSequence(start, finish, step)}`);
 // Examples:
 // Input: "FaagdnglishAGG" | Output: false
 // Input: "SMFENgliSHasnD" | Output: true
+console.log(`Write a function to determine whether a string contains the whole word "english".
+The order of characters/spelling is important, a string "agkjnenglishsad" would return true
+while "asdneglihsth" would return false. Upper and lower case does not matter.`);
 
 function containsWord(string, word) {
     if (typeof string != 'string' || typeof word != 'string') {
@@ -40,8 +45,9 @@ function containsWord(string, word) {
     return string.toLowerCase().includes(word.toLowerCase());
 }
 
-console.log(containsWord('FaagdnglishAGG', 'english')); // false
-console.log(containsWord('SMFENgliSHasnD', 'english')); // true
+console.log('"FaagdnglishAGG":', containsWord('FaagdnglishAGG', 'english')); // false
+console.log('"SMFENgliSHasnD":', containsWord('SMFENgliSHasnD', 'english')); // true
+console.log('-'.repeat(32));
 
 // Given an array of integers, write a function that returns an array of 2 integers. The first
 // integer will be the count of the positive integers, and the second integer will be the sum
@@ -51,6 +57,11 @@ console.log(containsWord('SMFENgliSHasnD', 'english')); // true
 // Input: [1, -6, 5, 4, 3, -7, -10, 201, -3] | Output: [5, -26]
 // Input: null | Output: []
 
+console.log(
+    `Given an array of integers, write a function that returns an array of 2 integers. 
+The first integer will be the count of the positive integers, and the second integer will be the sum 
+of the negative integers. If the input is empty or null, return an empty array.`
+);
 function positiveCountAndNegativeSum(integerArray) {
     if (integerArray === null || integerArray.length === 0) {
         return [];
@@ -78,6 +89,7 @@ for (let i = 0; i < 10; i++) {
 
 console.log(intArray);
 console.log(positiveCountAndNegativeSum(intArray));
+console.log('-'.repeat(32));
 
 // Write a function that translates an input string by replacing each character with a number
 // representing the amount of times that character appears in the string. Then separate each
@@ -86,6 +98,11 @@ console.log(positiveCountAndNegativeSum(intArray));
 // Input: "hello world", "-" | Output: "1-1-3-3-2-1-1-2-1-3-1"
 // Input: "challenge", "/" | Output: "1/1/1/2/2/2/1/1/2"
 
+console.log(
+    `Write a function that translates an input string by replacing each character with a number
+representing the amount of times that character appears in the string. Then separate each
+individual number with a different character.`
+);
 function stringToCharCount(string, separator) {
     const charCounts = new Map();
 
@@ -103,8 +120,9 @@ function stringToCharCount(string, separator) {
     return string.split('').map(char => charCounts.get(char)).join(separator);
 }
 
-console.log(stringToCharCount('hello world', '-'));
-console.log(stringToCharCount('challenge', '/'));
+console.log('"hello world":', stringToCharCount('hello world', '-'));
+console.log('"challenge":', stringToCharCount('challenge', '/'));
+console.log('-'.repeat(32));
 
 // Given a string of names like this: "Travis:Meyer;Gene:Carangal;Tom:Young;Jeff:Meyer", write
 // a function that makes the entire string uppercase and sorts it in alphabetical order by last
@@ -114,6 +132,13 @@ console.log(stringToCharCount('challenge', '/'));
 //
 // Example:
 // The end string should look like this: "(CARANGAL, GENE)(MEYER, JEFF)(MEYER, TRAVIS)(YOUNG, TOM)"
+console.log(
+    `Given a string of names like this: "Travis:Meyer;Gene:Carangal;Tom:Young;Jeff:Meyer", write
+a function that makes the entire string uppercase and sorts it in alphabetical order by last
+name. If the last names are the same sort them by the first name. Put the last name in front
+of the first name, remove the colons and semicolons, put the names in parentheses and separate
+the names with commas.`
+);
 
 function formatNames(stringOfNames) {
     return '(' + stringOfNames.toUpperCase()
@@ -124,12 +149,14 @@ function formatNames(stringOfNames) {
 }
 
 console.log(formatNames("Travis:Meyer;Gene:Carangal;Tom:Young;Jeff:Meyer"));
+console.log('-'.repeat(32));
 
 // Write a function to calculate a person’s age based on the date entered in the format MM/DD/YYYY.
 //
 // Example:
 // Input: 11/04/1982
 // Output: 39 (as of Jan 2022)
+console.log('Write a function to calculate a person’s age based on the date entered in the format MM/DD/YYYY.');
 
 function age(mmddyyyy) {
     const dob = new Date(mmddyyyy);
@@ -153,23 +180,26 @@ function age(mmddyyyy) {
 let dob = '11/04/1982';
 
 console.log(`A person born ${dob} is ${age(dob)} years old today.`);
+console.log('-'.repeat(32));
 
 // Write a function to convert a string into an array of words.
 // Example:
 // Input: "Trick or Treat"
 // Output: [‘Trick’, ‘or’, ‘Treat’]
+console.log('Write a function to convert a string into an array of words.');
 
 function stringToArrayOfWords(string) {
     return string.split(' ');
 }
 
-console.log(stringToArrayOfWords("Trick or Treat"));
+console.log('Trick or Treat:', stringToArrayOfWords("Trick or Treat"));
+console.log('-'.repeat(32));
 
 // Write a function to count the number of occurrences of a substring in a given string.
 // Example:
 // Input: "The pumpkin rolled down the hill and under someone’s car.", "the"
 // Output: 2
-
+console.log('Write a function to count the number of occurrences of a substring in a given string.');
 function countSubstrings(string, substring) {
     let count = 0;
     string = string.toLowerCase();
@@ -193,6 +223,7 @@ console.log(
 substring: "${substring}"
 count: ${countSubstrings(string, substring)}`
 );
+console.log('-'.repeat(32));
 
 /*
 	Write a function that takes a positive integer (seconds) and returns the time
@@ -202,6 +233,7 @@ count: ${countSubstrings(string, substring)}`
 	input: 28314
 	output: 07:51:54
 */
+console.log('Write a function that takes a positive integer (seconds) and returns the time in a human-readable format (HH:MM:SS).');
 function humanReadableTime(seconds) {
     const hours = Math.floor(seconds / 3600).toString().padStart(2, '0');
     seconds %= 3600;
@@ -214,6 +246,7 @@ function humanReadableTime(seconds) {
 console.log(`28314 seconds: ${humanReadableTime(28314)}`);
 let seconds = Math.floor(Math.random() * 86401);
 console.log(`${seconds} seconds: ${humanReadableTime(seconds)}`);
+console.log('-'.repeat(32));
 
 /*
     Write a function to remove these special characters from a string: ~,!,$,&,%, ,#,@,-,_,^,?
@@ -225,6 +258,7 @@ console.log(`${seconds} seconds: ${humanReadableTime(seconds)}`);
     Input: "I’ll bet living in a nudist-colony takes all the fun out of Halloween!!"
     Output: "I'llbetlivinginanudistcolonytakesallthefunoutofHalloween"
 */
+console.log(`Write a function to remove these special characters from a string: ~,!,$,&,%, ,#,@,-,_,^,?`);
 function removeSpecialChars(string) {
     if (typeof string !== 'string') return;
 
@@ -246,6 +280,7 @@ function removeSpecialChars(string) {
 
 console.log(removeSpecialChars("Happy ~!&$%#@- Halloween"));
 console.log(removeSpecialChars("I’ll bet living in a nudist-colony takes all the fun out of Halloween!!"));
+console.log('-'.repeat(32));
 
 /*
     Determine whether or not a word is an anagram of another.
@@ -255,6 +290,7 @@ console.log(removeSpecialChars("I’ll bet living in a nudist-colony takes all t
     Input: last, nope | Output: false
 
 */
+console.log('Determine whether or not a word is an anagram of another.');
 function isAnagram(string1, string2) {
     if (typeof string1 !== 'string' || typeof string2 !== 'string') return;
 
@@ -275,6 +311,7 @@ function isAnagram(string1, string2) {
 console.log('deco, code: ', isAnagram('deco', 'code'));
 console.log('last, nope: ', isAnagram('last', 'nope'));
 console.log('Louis Friend, iron sulfide:', isAnagram('Louis Friend', 'iron sulfide'));
+console.log('-'.repeat(32));
 
 /*
     ATMs only allow for 4 or 6 digit PINs. These PINs can only contain integers.
@@ -283,6 +320,8 @@ console.log('Louis Friend, iron sulfide:', isAnagram('Louis Friend', 'iron sulfi
     Input: 8472 | Output: true
     Input: 76a1 | Output: false
 */
+console.log(`ATMs only allow for 4 or 6 digit PINs. These PINs can only contain integers.
+Write a function that takes a PIN and checks to see if it is valid.`)
 function validatePIN(pin) {
     return /^\d{4}$|^\d{6}$/.test(pin);
 }
