@@ -275,3 +275,26 @@ function isAnagram(string1, string2) {
 console.log('deco, code: ', isAnagram('deco', 'code'));
 console.log('last, nope: ', isAnagram('last', 'nope'));
 console.log('Louis Friend, iron sulfide:', isAnagram('Louis Friend', 'iron sulfide'));
+
+/*
+    ATMs only allow for 4 or 6 digit PINs. These PINs can only contain integers.
+    Write a function that takes a PIN and checks to see if it is valid.
+    Example:
+    Input: 8472 | Output: true
+    Input: 76a1 | Output: false
+*/
+function validatePIN(pin) {
+    return /^\d{4}$|^\d{6}$/.test(pin);
+}
+
+const testPINs = [
+    true, 'abcd', 42, [true, 'abcd', 42], {pin: 1234}, 815, 8472, '9021', '76a1', 590_371, '359108'
+];
+
+testPINs.forEach(pin => {
+    if (validatePIN(pin)) {
+        console.log(`${pin} is a valid pin`)
+    } else {
+        console.log('%cINVALID:', 'color: #f02040;', pin);
+    }
+});
