@@ -337,3 +337,50 @@ testPINs.forEach(pin => {
         console.log('%cINVALID:', 'color: #f02040;', pin);
     }
 });
+console.log('-'.repeat(32));
+
+/*
+* Write a function that returns a duration (given as a number of seconds) in a human-readable way.
+* This function will only take a non-negative integer and return a duration expressed as a combination
+* of years, days, hours, minutes and seconds. If the number is 0, the function must return "now".
+* Example:
+* Input: 4782 | Output: 1 hour, 19 minutes and 42 seconds
+* Input: 84773672123 | Output: 2688 years, 56 days, 18 hours, 15 minutes and 23 seconds
+*/
+console.log(
+`Write a function that returns a duration (given as a number of seconds) in a human-readable way.
+This function will only take a non-negative integer and return a duration expressed as a combination
+of years, days, hours, minutes and seconds. If the number is 0, the function must return "now".`
+);
+
+function duration(seconds) {
+    if (!Number.isInteger(seconds) || seconds < 0) return;
+    if (seconds === 0) return 'now';
+
+    const MIN = 60;
+    const HOUR = MIN * 60;
+    const DAY = HOUR * 24;
+    const YEAR = DAY * 365;
+
+    let years = Math.floor(seconds / YEAR);
+    seconds -= years * YEAR;
+    let days = Math.floor(seconds / DAY);
+    seconds -= days * DAY;
+    let hours = Math.floor(seconds / HOUR);
+    seconds -= hours * HOUR;
+    let minutes = Math.floor(seconds / MIN);
+    seconds -= minutes * MIN;
+
+    years = years > 0 ? `${years} ${years > 1 ? 'years' : 'year'}, ` : '';
+    days = days > 0 ? `${days} ${days > 1 ? 'days' : 'day'}, ` : '';
+    hours = hours > 0 ? `${hours} ${hours > 1 ? 'hours' : 'hour'}, ` : '';
+    minutes = minutes > 0 ? `${minutes} ${minutes > 1 ? 'minutes' : 'minute'} ` : '';
+
+    return years + days + hours + minutes + `and ${seconds} ${seconds > 1 ? 'seconds' : 'second'}`;
+}
+
+console.log(0, duration(0));
+console.log(4782, duration(4782));
+console.log(90001, duration(90001));
+console.log(10499273, duration(10499273));
+console.log(84773672123, duration(84773672123));
