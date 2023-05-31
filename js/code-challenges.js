@@ -384,3 +384,46 @@ console.log(4782, duration(4782));
 console.log(90001, duration(90001));
 console.log(10499273, duration(10499273));
 console.log(84773672123, duration(84773672123));
+console.log('-'.repeat(32));
+
+/*
+ * Write a function that takes a number and returns its multiplicative persistence, which is the number of times you can
+ * multiply the digits in the number given until you can reach a single digit.
+ * Examples:
+ * Input: 123 | Output: 1
+ * Input: 976342186 | Output: 3
+ */
+console.log(
+    `Write a function that takes a number and returns its multiplicative persistence, which is the number of times you can 
+multiply the digits in the number given until you can reach a single digit.`
+);
+
+function multiplyDigits(integer) {
+    return integer.toString()
+        .split('')
+        .map(d => +d)
+        .reduce((product, multiplier) => product * multiplier);
+}
+
+function multiplicativePersistence(integer) {
+    if (!Number.isInteger(integer)) return;
+    let count = 0;
+    while (integer.toString().length > 1) {
+        integer = multiplyDigits(integer);
+        count++;
+    }
+
+    return count;
+}
+
+const multiPersistTestInts = [
+    123,
+    976342186,
+    6788,
+    26888999,
+    277777788888899
+];
+
+multiPersistTestInts.forEach(int => {
+    console.log(int, multiplicativePersistence(int));
+});
