@@ -427,3 +427,38 @@ const multiPersistTestInts = [
 multiPersistTestInts.forEach(int => {
     console.log(int, multiplicativePersistence(int));
 });
+console.log('-'.repeat(32));
+
+/*
+* Write a function that takes a positive integer and returns the Collatz sequence: if the integer is odd, the next
+* number should be 3n + 1, and if even, the next step should be n / 2. This continues until the integer is reduced down
+* to 1 and return the array of integers. (It remains unproven whether every starting integer will reduce to 1, but no
+* number has yet been found that does not)
+* Example:
+* Input: 5 | Output: [5, 16, 8, 4, 2, 1]
+* Input: 7 | Output: [7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
+*/
+console.log(
+    `Write a function that takes a positive integer and returns the Collatz sequence: if the integer is odd, the next
+number should be 3n + 1, and if even, the next step should be n / 2. This continues until the integer is reduced down
+to 1 and return the array of integers.`
+);
+
+function collatz(integer) {
+    const steps = [integer];
+
+    while (integer > 1) {
+        integer = integer % 2 === 0 ? integer / 2 : integer * 3 + 1;
+        steps.push(integer);
+    }
+
+    return steps;
+}
+
+const collatzTestIntegers = [
+    5, 7, 9, 16, 20, 25, 27
+];
+
+collatzTestIntegers.forEach(integer => {
+    console.log(collatz(integer).join(', '));
+});
