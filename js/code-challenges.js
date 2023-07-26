@@ -462,3 +462,27 @@ const collatzTestIntegers = [
 collatzTestIntegers.forEach(integer => {
     console.log(collatz(integer).join(', '));
 });
+console.log('-'.repeat(32));
+
+
+console.log(
+    `Write a function that returns the shortest word in a string. Ignore punctuation. If there are two or more words 
+    that are the same length, return the LAST word from the string with that length.`
+);
+/*
+* a. Input: "My phone battery is always dead"
+*    Answer: is
+* b. Input: "Travis wears a parka in the office"
+*    Answer: a
+*/
+
+function shortestWord(phrase) {
+    const words = phrase.split(' ').map(word => word.replaceAll(/[^A-Za-z0-9]/g, ''));
+    const wordLengths = words.map(word => word.length);
+    const shortest = Math.min(...wordLengths);
+
+    return words[wordLengths.lastIndexOf(shortest)];
+}
+
+console.log(`The shortest word in, "My phone battery is always dead"\n--> ${shortestWord("My phone battery is always dead")}`);
+console.log(`The shortest word in, "Travis wears a parka in the office"\n--> ${shortestWord("Travis wears a parka in the office")}`);
